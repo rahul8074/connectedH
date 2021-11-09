@@ -54,14 +54,14 @@ const Login = () => {
     return(
         <>
         <h1>Welcome to ConnectedH</h1>
-        <div className="sign-in-page" >
-            <div className="container-fluid  " style={{border:'1px solid' ,width:'400px',lineHeight:0.9}}>
+        <div   >
+            <div className="container-fluid  " style={{border:'1px solid' ,width:'400px',lineHeight:0.9,borderRadius:'10px',padding:'10px',color:'gray',boxShadow:'1px 0px 19px 1px'}}>
             <form  onSubmit={e =>onSubmit(e)}  >
                     
          
-            <div className="form-group" >
+            <div className="form-group"  style={{color:'black'}} >
                 
-               Email <div className="input-container">
+               Email <div className="input-container" style={{margin:'10px'}}>
                  
                 <input className="form-control " 
                 type="email" 
@@ -74,9 +74,9 @@ const Login = () => {
             </div>
             <br></br>
 
-            <div className="form-group">
+            <div className="form-group" style={{color:'black'}}>
               Password
-                <div className="input-container">
+                <div className="input-container" style={{margin:'10px'}}>
                  
                 <input  className="form-control "
                 type="password" 

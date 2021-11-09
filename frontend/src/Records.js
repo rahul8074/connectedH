@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react";
 import axios from "axios";
 import {useHistory} from 'react-router-dom';
+import Pagination from './Pagination';
 
 const Records = ()=>{
     let history = useHistory(); //use history
@@ -8,6 +9,9 @@ const Records = ()=>{
     console.log(data)
 
     const [products,setProducts] = useState(['']);
+
+
+
 
 //  load function whenever page refreshes 
  useEffect( () =>{
@@ -51,6 +55,23 @@ let a=[]
    
 }
 
+//pagination
+const [showPerPage,setShowPerPage]=useState(1);
+const [pagination , setPagination] = useState({
+    start:0,
+    end:showPerPage,
+})
+
+const onPaginationChange = (start,end)=>{
+    console.log(start,end);
+    if(start>=0 && end<=products.length && start <end )
+    setPagination({
+        start:start,
+        end:end,
+    })
+}
+
+ 
 
 
     return(
@@ -68,15 +89,15 @@ let a=[]
             
         </div>
 
-
+     
         
         <div style={{backgroundColor:"white",color:'black'}}>
-            
+           
                <div style={{margin:'10px',padding:'10px'}}>
                    <table style={{border:1}}>
 
-                   {products.map((prod,key)=>(
-                        <tr>
+                   {products.slice(pagination.start,pagination.end).map((prod,key)=>(
+                        <tr key={prod.id}>
                             
                         
                             <td>
@@ -102,8 +123,10 @@ let a=[]
                </div>
 
 
+            <Pagination showPerPage={showPerPage} onPaginationChange={onPaginationChange} />
         
         </div>
+         
             
          </>
     )
